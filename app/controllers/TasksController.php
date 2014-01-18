@@ -7,6 +7,14 @@ class TasksController extends BaseController {
 		$tasks = Task::all();
 
 		// load a view to display them
-		return $tasks;
+		return View::make('tasks.index', ['tasks' => $tasks]);
+	}
+	public function show($id)
+	{
+		// fetch a single task
+		$task = Task::findOrFail($id);
+
+		// load a view to display it
+		return View::make('tasks.show', compact('task'));
 	}
 }
